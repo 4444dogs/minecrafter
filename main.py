@@ -1,4 +1,3 @@
-import mcstatus
 import revolt
 import asyncio
 import aiohttp
@@ -6,13 +5,14 @@ from revolt.ext import commands
 from random import randint
 from mcstatus import server
 import TOKENFILE
+import PyPixel
 
 class Client(commands.CommandsClient):
     async def get_prefix(self, message: revolt.Message):
         return "mc!"
 
-    @commands.command(name='info')
-    async def info(self, ctx: commands.Context, ip):
+    @commands.command(name='server')
+    async def server(self, ctx: commands.Context, ip):
         try:
             mcServer = server.JavaServer.lookup(str(ip))
             mcStatus = mcServer.status()
@@ -60,6 +60,20 @@ class Client(commands.CommandsClient):
         except:
             LookupError
             await ctx.send("Sorry, an error occured. This usually happens when a server does not is exist or is currently offline.")
+    @commands.command(name="hypixel")
+    async def hypixel(self, ctx: commands.Context, player):
+        try:
+            hyp = PyPixel.Hypixel(api_key=TOKENFILE.HYPIXEL_API_KEY)
+            playerUUID = await hyp.get_uuid(str(player))
+            player = await hyp.get_player(playerUUID)
+            await ctx.send("""Rank: {}
+            Last Online: {}
+            Recently Played: {}
+            First Login: {}
+            Level: {}""".format(str(player.rank), str(player.last_logout), str(player.recently_played), str(player.firstLogin), str(player.level)))
+        except:
+            PyPixel.PlayerNotFound
+            await ctx.send("Player not found!")
 
 
 
