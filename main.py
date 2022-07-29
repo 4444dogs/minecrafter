@@ -53,7 +53,7 @@ class Client(commands.CommandsClient):
                         Minecraft Version: {}
                         Plugins: {}
                         Players Online: {}/{}
-                        This server has query enabled so there a a bit more information!""".format(str(mcStatus.latency), str(readableMOTD), str(mcStatus.version.name), str(mcQuery.software.plugins), str(mcQuery.players.online), str(mcQuery.players.max)))
+                        This server has query enabled so there is a bit more information!""".format(str(mcStatus.latency), str(readableMOTD), str(mcStatus.version.name), str(mcQuery.software.plugins), str(mcQuery.players.online), str(mcQuery.players.max)))
 
                 except:
                     LookupError
@@ -88,7 +88,7 @@ class Client(commands.CommandsClient):
             Karma: {}""".format(str(player.rank), str(player.last_logout), str(player.recently_played), str(player.firstLogin), str(player.level), str(player.achievement_points), str(player.stats.skywars.level), str(player.karma)))
         except:
             PyPixel.PlayerNotFound
-            await ctx.send("Player not found!")
+            await ctx.send("Player not found! (OR an error has occurred)")
 
 
 
