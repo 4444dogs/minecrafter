@@ -6,6 +6,7 @@ from random import randint
 from mcstatus import server
 import TOKENFILE
 import PyPixel
+from mojang import MojangAPI
 
 class Client(commands.CommandsClient):
     async def get_prefix(self, message: revolt.Message):
@@ -89,6 +90,19 @@ class Client(commands.CommandsClient):
         except:
             PyPixel.PlayerNotFound
             await ctx.send("Player not found! (OR an error has occurred)")
+    @commands.command(name="player")
+    async def player(self, ctx: commands.Context, player):
+        playerUUID = MojangAPI.get_uuid(str(player))
+        try:
+            if not playerUUID:
+                await ctx.send("Player not found!")
+            else:
+                player = MojangAPI.get_profile(playerUUID)
+                await ctx.send(f"""UUID: {playerUUID}
+                Skin: [Skin URL]({player.skin_url})
+                """)
+        except:
+            await ctx.send("An error has occurred!")
 
 
 

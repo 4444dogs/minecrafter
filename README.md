@@ -14,7 +14,7 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 
 ## Requirements
 * Python 3.10.5
-* `revolt.py`, `mcstatus`, and `PyPixel`
+* `revolt.py`, `mcstatus`, `PyPixel`, and `mojang`
 
 ## Setup
 1. Run `cp TOKENFILE.example.py TOKENFILE.py` (`cp` is replaced with `copy` on Windows.)
