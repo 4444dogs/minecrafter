@@ -4,9 +4,15 @@ import aiohttp
 from revolt.ext import commands
 from random import randint
 from mcstatus import server
-import TOKENFILE
 import PyPixel
 from mojang import MojangAPI
+import dotenv
+import os
+
+config = dotenv.dotenv_values(".env")
+
+dotenv.load_dotenv()
+
 
 class Client(commands.CommandsClient):
     async def get_prefix(self, message: revolt.Message):
@@ -18,8 +24,8 @@ class Client(commands.CommandsClient):
             USE_QUERY = False
             mcServer = server.JavaServer.lookup(str(ip))
             mcStatus = mcServer.status()
-            for i in range(len(TOKENFILE.QUERY_SERVERS)):
-                if TOKENFILE.QUERY_SERVERS[i] == ip:
+            for i in range(len(os.getenv("QUERY_SERVERS"))):
+                if os.getenv("QUERY_SERVERS")[i] == ip:
                     USE_QUERY = True
             if USE_QUERY == True:
                 try:
@@ -76,7 +82,7 @@ class Client(commands.CommandsClient):
     @commands.command(name="hypixel")
     async def hypixel(self, ctx: commands.Context, player):
         try:
-            hyp = PyPixel.Hypixel(api_key=TOKENFILE.HYPIXEL_API_KEY)
+            hyp = PyPixel.Hypixel(api_key=os.getenv("HYPIXEL_API_KEY"))
             playerUUID = await hyp.get_uuid(str(player))
             player = await hyp.get_player(playerUUID)
             await ctx.send("""Rank: {}
@@ -109,7 +115,7 @@ class Client(commands.CommandsClient):
 
 async def main():
     async with aiohttp.ClientSession() as session:
-        client = Client(session, TOKENFILE.TOKEN_REVOLT)
+        client = Client(session, os.getenv("TOKEN_REVOLT"))
         await client.start()
 
 

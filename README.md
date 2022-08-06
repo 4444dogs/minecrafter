@@ -14,10 +14,10 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 
 ## Requirements
 * Python 3.10.5
-* `revolt.py`, `mcstatus`, `PyPixel`, and `mojang`
+* `revolt.py`, `mcstatus`, `PyPixel`, `python-dotenv`, `mojang`, and `python-dotenv`
 
 ## Setup
-1. Run `cp TOKENFILE.example.py TOKENFILE.py` (`cp` is replaced with `copy` on Windows.)
+1. Run `cp .env.example .env` (`cp` is replaced with `copy` on Windows.)
 2. Replace `YOUR REVOLT TOKEN HERE` with your Revolt bot's token.
 3. Get a Hypixel API token by running `/api new` in the official Hypixel Minecraft server.
 4. Replace `YOUR HYPIXEL API TOKEN HERE` with your new Hypixel API Token.
@@ -25,5 +25,5 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 6. Enjoy!
 
 ## Additional Notes
-If you know of a Minecraft server that has `enable-query` set to `true` then you can add it's IP in the form of a string to the `QUERY_SERVERS` list in `TOKENFILE.py`
+If you know of a Minecraft server that has `enable-query` set to `true` then you can add it's IP in the form of a string to the `QUERY_SERVERS` list in `.env`
 
