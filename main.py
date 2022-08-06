@@ -8,6 +8,7 @@ import PyPixel
 from mojang import MojangAPI
 import dotenv
 import os
+import ast
 
 config = dotenv.dotenv_values(".env")
 
@@ -24,8 +25,8 @@ class Client(commands.CommandsClient):
             USE_QUERY = False
             mcServer = server.JavaServer.lookup(str(ip))
             mcStatus = mcServer.status()
-            for i in range(len(os.getenv("QUERY_SERVERS"))):
-                if os.getenv("QUERY_SERVERS")[i] == ip:
+            for i in range(len(ast.literal_eval(os.getenv("QUERY_SERVERS")))):
+                if ast.literal_eval(os.getenv("QUERY_SERVERS"))[i] == ip:
                     USE_QUERY = True
             if USE_QUERY == True:
                 try:
@@ -52,7 +53,7 @@ class Client(commands.CommandsClient):
                         Minecraft Version: {}
                         Plugins: {}
                         Players Online: {}/{} ({})
-                        This server has query enabled so there a a bit more information!""".format(str(mcStatus.latency), str(readableMOTD), str(mcStatus.version.name), str(pluginNames), str(mcQuery.players.online), str(mcQuery.players.max), str(playerNames)))
+                        This server has query enabled so there is a bit more information!""".format(str(mcStatus.latency), str(readableMOTD), str(mcStatus.version.name), str(pluginNames), str(mcQuery.players.online), str(mcQuery.players.max), str(playerNames)))
                     else:
                         readableMOTD = mcQuery.motd.replace("§0", "").replace("§1", "").replace("§2", "").replace("§3", "").replace("§4", "").replace("§5", "").replace("§6", "").replace("§7", "").replace("§8", "").replace("§9", "").replace("§a", "").replace("§b", "").replace("§c", "").replace("§d", "").replace("§e", "").replace("§f", "").replace("§k", "").replace("§l", "").replace("§m", "").replace("§n", "").replace("§o", "").replace("§r", "").replace("\n", "")
                         await ctx.send("""Latency: {} ms
