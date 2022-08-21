@@ -14,7 +14,7 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 
 ## Requirements
 * Python 3.10.5
-* `revolt.py`, `mcstatus`, `PyPixel`, `python-dotenv`, `mojang`, and `python-dotenv`
+* `revolt.py`, `mcstatus`, `PyPixel`, `mojang`, `mcrcon`, and `python-dotenv`
 
 ## Setup
 1. Run `cp .env.example .env` (`cp` is replaced with `copy` on Windows.)
@@ -26,4 +26,10 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 
 ## Additional Notes
 If you know of a Minecraft server that has `enable-query` set to `true` then you can add it's IP in the form of a string to the `QUERY_SERVERS` list in `.env`
+
+If you would like to connect to your Minecraft server's RCON you can follow the instructions below. (Note that to enter credentials for your server in `.env`, the credentials MUST all be in the same slot in the list.)
+1. Add the channel that you wish to dedicate to RCON's id in the form of a string to the `RCON_CHANNELS` list in `.env`
+2. Add your server's IP in the form of a string to the `RCON_IPS` list in `.env`
+3. Add your server's RCON passsword in the form of a string to the `RCON_PASSWORDS` list in `.env`
+4. Add any user that you wish to give RCON access to's Revolt ID in the form of a string to the `RCON_USERS` list in `.env`
 

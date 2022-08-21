@@ -9,6 +9,7 @@ from mojang import MojangAPI
 import dotenv
 import os
 import ast
+from mcrcon import MCRcon
 
 config = dotenv.dotenv_values(".env")
 
@@ -18,6 +19,17 @@ dotenv.load_dotenv()
 class Client(commands.CommandsClient):
     async def get_prefix(self, message: revolt.Message):
         return "mc!"
+    async def on_message(self, message: revolt.Message):
+        for i in range(len(ast.literal_eval(os.getenv("RCON_CHANNELS")))):
+            if ast.literal_eval(os.getenv("RCON_CHANNELS"))[i] == message.channel.id:
+                RUN_COMMAND = False
+                for i in range(len(ast.literal_eval(os.getenv("RCON_USERS")))):
+                    if ast.literal_eval(os.getenv("RCON_USERS"))[i] == message.author.id:
+                        RUN_COMMAND = True
+                if RUN_COMMAND == True:
+                    with MCRcon(ast.literal_eval(os.getenv("RCON_IPS"))[i], ast.literal_eval(os.getenv("RCON_PASSWORDS"))[i]) as mcr:
+                        mcr.command(message.content)
+        await Client.process_commands(self, message=message)
 
     @commands.command(name='server')
     async def server(self, ctx: commands.Context, ip):
