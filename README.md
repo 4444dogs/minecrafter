@@ -10,7 +10,7 @@ Main Instance Invite: https://app.revolt.chat/bot/01G873ZAKVXGHT8TE28EENDZ5V
 
 
 # Self-hosting
-Do you want more ways to configure Minecrafter, or just test out your contributions? Well than this tutorial is for you! Please not that this tutorial assumes that you have already created your Revolt bot on the frontend.
+Do you want more ways to configure Minecrafter, or just test out your contributions? Well than this tutorial is for you! Please note that this tutorial assumes that you have already created your Revolt bot on the frontend.
 
 ## Requirements
 * Python 3.10.5
