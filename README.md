@@ -19,7 +19,7 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 ## Setup
 1. Run `cp .env.example .env` (`cp` is replaced with `copy` on Windows.)
 2. Replace `YOUR REVOLT TOKEN HERE` with your Revolt bot's token.
-3. Get a Hypixel API token by running `/api new` in the official Hypixel Minecraft server.
+3. Get a Hypixel API token by running `/api` in the official Hypixel Minecraft server.
 4. Replace `YOUR HYPIXEL API TOKEN HERE` with your new Hypixel API Token.
 5. Run `python main.py` or `python3.10 main.py` depending on your operating system.
 6. Enjoy!
