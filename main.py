@@ -30,6 +30,8 @@ class Client(commands.CommandsClient):
                     with MCRcon(ast.literal_eval(os.getenv("RCON_IPS"))[i], ast.literal_eval(os.getenv("RCON_PASSWORDS"))[i]) as mcr:
                         mcr.command(message.content)
         await Client.process_commands(self, message=message)
+    async def on_ready(self):
+        await self.edit_status(presence=revolt.PresenceType.online, text="""My prefix is "mc!" """)
 
     @commands.command(name='server')
     async def server(self, ctx: commands.Context, ip):
