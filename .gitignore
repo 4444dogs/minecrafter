@@ -130,3 +130,6 @@ dmypy.json
 
 # Revolt Token
 TOKENFILE.py
+
+# Referance File
+referance.py

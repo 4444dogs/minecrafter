@@ -14,7 +14,7 @@ Do you want more ways to configure Minecrafter, or just test out your contributi
 
 ## Requirements
 * Python 3.10.5
-* `revolt.py`, `mcstatus`, `PyPixel`, `mojang`, `mcrcon`, and `python-dotenv`
+* `voltage` or `git+https://github.com/EnokiUN/voltage`, `mcstatus`, `PyPixel`, `mojang`, `mcrcon`, and `python-dotenv`
 
 ## Setup
 1. Run `cp .env.example .env` (`cp` is replaced with `copy` on Windows.)
